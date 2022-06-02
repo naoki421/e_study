@@ -1,0 +1,11 @@
+<h2>科目編集</h2>
+
+<div>
+  <%= form_with model: @subject, url: subject_path(@subject), method: :patch do |f| %>
+    <div>
+      <%= f.label :name, "科目名" %>
+      <%= f.text_field :name, placeholder: "(例)英語、簿記、漢字検定", autocomplete: "off" %>
+      <%= f.submit "変更を保存" %>
+    </div>
+  <% end %>
+</div>
