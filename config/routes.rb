@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources :tasks, except: [:index, :show]
     resources :subjects, except: [:index, :show]
     resources :post_study_methods do
-      resource :comments
+      resources :comments
     end
   end
 
