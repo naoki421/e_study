@@ -22,7 +22,9 @@ Rails.application.routes.draw do
     patch "/task/:id/achieve" => "tasks#achieve", as: "achieve"
     resources :tasks, except: [:index, :show]
     resources :subjects, except: [:index, :show]
-    resources :post_study_methods
+    resources :post_study_methods do
+      resource :comments
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,0 +1,28 @@
+<h2>投稿一覧</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>タイトル</th>
+        <th>本文</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @post_study_methods.each do |post_study_method| %>
+          <tr>
+            <td>
+              <%= link_to post_study_method_path(post_study_method) do %>
+                <%= post_study_method.user.name %>
+              <% end %>
+            </td>
+            <td><%= post_study_method.title %></td>
+            <td><%= post_study_method.body %></td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

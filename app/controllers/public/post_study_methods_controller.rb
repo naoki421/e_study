@@ -5,6 +5,15 @@ class Public::PostStudyMethodsController < ApplicationController
     @post_study_methods = current_user.post_study_methods
   end
 
+  def index
+    @post_study_methods = PostStudyMethod.all
+  end
+
+  def show
+    @post_study_method = PostStudyMethod.find(params[:id])
+    @comment = Comment.new
+  end
+
   def create
     @post_study_method = PostStudyMethod.new(post_study_method_params)
     @post_study_method.user_id = current_user.id

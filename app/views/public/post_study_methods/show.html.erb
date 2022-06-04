@@ -1,0 +1,42 @@
+<h2>投稿詳細</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>投稿者</th>
+        <th>タイトル</th>
+        <th>本文</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @post_study_method.user.name %></td>
+        <td><%= @post_study_method.title %></td>
+        <td><%= @post_study_method.body %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>コメント一覧</h2>
+
+<div>
+  <p>コメント件数:<%= @post_study_method.comments.count %></p>
+  <% @post_study_method.comments.each do |comment| %>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime("%Y/%m/%d") %><%= comment.comment %>
+  <% end %>
+</div>
+
+<h2>コメント投稿</h2>
+
+<div>
+  <%= form_with model: @comment, url: post_study_method_comments_path(@post_study_method), method: :post do |f| %>
+    <div>
+      <%= f.label :comment, "コメント" %>
+      <%= f.text_area :comment, placeholder: "コメントをここに", autocomplete: "off" %>
+      <%= f.submit "送信" %>
+    </div>
+  <% end %>
+</div>
