@@ -1,0 +1,40 @@
+<h2>投稿新規作成</h2>
+
+<div>
+  <%= form_with model: @post_study_method, url: post_study_methods_path, method: :post do |f| %>
+    <div>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, placeholder: "(例)英単語の覚え方", autocomplete: "off" %><br>
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body, autocomplete: "off" %><br>
+      <%= f.submit "投稿" %>
+    </div>
+  <% end %>
+</div>
+
+<h2>投稿一覧</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>本文</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @post_study_methods.each do |post_study_method| %>
+          <tr>
+            <td><%= post_study_method.title %></td>
+            <td><%= post_study_method.body %></td>
+            <td><%= link_to "編集", edit_post_study_method_path(post_study_method) %></td>
+            <td><%= link_to "削除", post_study_method_path(post_study_method), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

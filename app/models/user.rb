@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :subjects, dependent: :destroy
   has_many :tasks, dependent: :destroy
+  has_many :post_study_methods, dependent: :destroy
 
   validates :name, presence: true
   validates :school_year, presence: true, numericality: { in: 1..7 }

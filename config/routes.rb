@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
-  
+
   #ゲストユーザー用
   devise_scope :user do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     patch "/task/:id/achieve" => "tasks#achieve", as: "achieve"
-    resources :tasks
+    resources :tasks, except: [:index, :show]
     resources :subjects, except: [:index, :show]
+    resources :post_study_methods
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

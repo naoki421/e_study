@@ -1,0 +1,13 @@
+<h2>投稿編集</h2>
+
+<div>
+  <%= form_with model: @post_study_method, url: post_study_method_path, method: :patch do |f| %>
+    <div>
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, placeholder: "(例)英単語の覚え方", autocomplete: "off" %><br>
+      <%= f.label :body, "本文" %>
+      <%= f.text_area :body, autocomplete: "off" %><br>
+      <%= f.submit "変更を保存" %>
+    </div>
+  <% end %>
+</div>
