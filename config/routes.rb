@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   scope module: :public do
+    patch "/task/:id/achieve" => "tasks#achieve", as: "achieve"
     resources :tasks
     resources :subjects, except: [:index, :show]
   end
