@@ -2,15 +2,15 @@
 <html>
   <head>
     <title>EStudy</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <header>
       <% if admin_signed_in? %>
         <%= render "layouts/admin_header" %>
@@ -19,7 +19,14 @@
       <% end %>
     </header>
     <main>
-      <%= yield %>  
+      <%= yield %>
     </main>
+    <footer class="bg-info text-white pt-4 pb-3 mt-auto">
+      <div class="container">
+        <div class="row">
+          <p class="col-12 text-center">© 2022 Naoki Matsumoto</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
