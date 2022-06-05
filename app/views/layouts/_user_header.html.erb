@@ -1,16 +1,15 @@
-
-<div>
-  <ul>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav ml-auto">
     <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <li class="nav-item">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-white" %>
       </li>
     <% else %>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
+      <li class="nav-item">
+        <%= link_to "ログイン", new_user_session_path, class: "nav-link text-white" %>
       </li>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+      <li class="nav-item">
+        <%= link_to "新規登録", new_user_registration_path, class: "nav-link text-white" %>
       </li>
     <% end %>
   </ul>
