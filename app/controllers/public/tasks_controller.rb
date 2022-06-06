@@ -2,7 +2,11 @@ class Public::TasksController < ApplicationController
 
   def new
     @task = Task.new
+    #達成済みのタスクは表示しない
     @tasks = Task.where(user_id: current_user.id, is_achieved: false)
+    #ユーザーの総勉強時間
+    @total_study_time = Task.where(user_id: current_user.id, is_achieved: true).sum(:study_hours)
+    @todays_total_study_time = Task.where(user_id: current_user.id, is_achieved: true, updated_at: Time.zone.now.all_day).sum(:study_hours)
   end
 
   def create
