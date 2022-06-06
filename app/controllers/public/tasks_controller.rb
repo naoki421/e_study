@@ -2,7 +2,7 @@ class Public::TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @tasks = current_user.tasks
+    @tasks = Task.where(user_id: current_user.id, is_achieved: false)
   end
 
   def create
@@ -29,8 +29,12 @@ class Public::TasksController < ApplicationController
   end
 
   def achieve
+    #タスクを達成するとユーザーのポイントが貯まる
     @task = Task.find(params[:id])
+    @user = User.find(current_user.id)
     @task.update(is_achieved: true)
+    @user.point += @task.study_hours
+    @user.save
     redirect_to request.referer
   end
 
