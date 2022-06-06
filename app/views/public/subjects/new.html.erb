@@ -1,35 +1,54 @@
-<h2>科目</h2>
-
-<h3>科目新規登録</h3>
-
-<div>
-  <%= form_with model: @subject, url: subjects_path, method: :post do |f| %>
-    <div>
-      <%= f.label :name, "科目名" %>
-      <%= f.text_field :name, placeholder: "(例)英語、簿記、漢字検定", autocomplete: "off" %>
-      <%= f.submit "新規登録" %>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="offset-3">
+        <h3 class="text-info">科目新規登録</h3>
+      </div>
+      <div>
+        <%= form_with model: @subject, url: subjects_path, method: :post do |f| %>
+          <div class="d-flex offset-3 mt-4">
+            <div>
+              <%= f.label :name, "科目名", class: "mr-4"%>
+              <%= f.text_field :name, placeholder: "(例)英語、簿記、漢字検定", autocomplete: "off", class: "mr-4" %>
+            </div>
+            <div>
+              <%= f.submit "新規登録", class: "btn btn-secondary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="offset-3 mt-5 mb-4">
+        <h3 class="text-info">科目一覧</h3>
+      </div>
+      <div class="offset-3">
+        <table class="table table-hover col-6">
+          <thead>
+            <tr>
+              <th>科目名</th>
+              <th>編集</th>
+              <th>削除</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @subjects.each do |subject| %>
+              <tr>
+                <td><%= subject.name %></td>
+                <td>
+                  <%= link_to edit_subject_path(subject) do %>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to subject_path(subject), method: :delete do %>
+                    <i class="fa-regular fa-trash-can"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
 
-<h3>科目一覧</h3>
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>科目名</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @subjects.each do |subject| %>
-        <tr>
-          <td><%= subject.name %></td>
-          <td><%= link_to "編集", edit_subject_path(subject) %></td>
-          <td><%= link_to "削除", subject_path(subject), method: :delete %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>

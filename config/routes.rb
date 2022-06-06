@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     patch "/task/:id/achieve" => "tasks#achieve", as: "achieve"
+    resources :users, only: [:index, :show, :edit, :update]
     resources :tasks, except: [:index, :show]
     resources :subjects, except: [:index, :show]
     resources :post_study_methods do
