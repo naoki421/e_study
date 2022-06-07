@@ -16,3 +16,4 @@ class Public::AchievedTasksController < ApplicationController
   end
 
 end
+

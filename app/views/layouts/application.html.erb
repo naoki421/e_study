@@ -11,27 +11,14 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm bg-info">
-      <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container">
-          <a class="navbar-brand p-4 text-white" href="/">e-study</a>
-          <!--ハンバーガーメニュー-->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <% if admin_signed_in? %>
-            <%= render "layouts/admin_header" %>
-          <% else %>
-            <%= render "layouts/user_header" %>
-          <% end %>
-        </div>
-      </nav>
-    </header>
-
+    <% if admin_signed_in? %>
+      <%= render "layouts/admin_header" %>
+    <% else %>
+      <%= render "layouts/user_header" %>
+    <% end %>
     <main>
       <%= yield %>
     </main>
-
     <footer class="bg-info text-white pt-4 pb-3 mt-auto">
       <div class="container">
         <div class="row">
