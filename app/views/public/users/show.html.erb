@@ -1,17 +1,50 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="card mt-5">
+        <div class="card-header text-center">
+          <h4><%= @user.name %></h4>
+        </div>
+        <div class="card-body text-center">
+          <%= image_tag @user.get_profile_image(130,130) %>
+        </div>
+        <div class="card-footer text-center">
+          <% if @user == current_user %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-8 offset-1">
+      <div class="mt-5">
+        <% @post_study_method.each do |post_study_method| %>
+          <div class="border-bottom">
+            <%= link_to user_path(post_study_method.user) do %>
+              <span><%= image_tag post_study_method.user.get_profile_image(50,50) %></span>
+            <% end %>
+            <span><%= post_study_method.user.name %></span>
+            <span><%= post_study_method.created_at.strftime('%Y/%m/%d %H:%M') %></span>
+            <%= link_to post_study_method_path(post_study_method) do %>
+              <h5><%= post_study_method.title %></h5>
+            <% end %>
+            <p><%= post_study_method.body %></p>
+            <span>
+              <% if post_study_method.favorited_by?(current_user) %>
+                <%= link_to post_study_method_favorites_path(post_study_method), method: :delete do %>
+                  ❤<%= post_study_method.favorites.count %>いいね
+                <% end %>
+              <% else %>
+                <%= link_to post_study_method_favorites_path(post_study_method), method: :post do %>
+                  ♡<%= post_study_method.favorites.count %>いいね
+                <% end %>
+              <% end %>
+            </span>
+            <span class="ml-3">コメント数: <%= link_to "#{post_study_method.comments.count}", post_study_method_path(post_study_method) %></span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-<% @post_study_method.each do |post_study_method| %>
-<div>
-  <p><%= post_study_method.user.name %></p>
-  <p><%= image_tag post_study_method.user.get_profile_image(100,100) %></p>
-  <p><%= post_study_method.title %></p>
-  <p><%= post_study_method.body %></p>
-</div>
-<% end %>
