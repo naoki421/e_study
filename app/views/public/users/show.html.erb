@@ -24,9 +24,11 @@
             <% end %>
             <span><%= post_study_method.user.name %></span>
             <span><%= post_study_method.created_at.strftime('%Y/%m/%d %H:%M') %></span>
-            <%= link_to post_study_method_path(post_study_method) do %>
-              <h5><%= post_study_method.title %></h5>
-            <% end %>
+            <h5>
+              <%= link_to post_study_method_path(post_study_method) do %>
+                <%= post_study_method.title %>
+              <% end %>
+            </h5>
             <p><%= post_study_method.body %></p>
             <span>
               <% if post_study_method.favorited_by?(current_user) %>
