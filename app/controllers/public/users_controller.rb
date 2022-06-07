@@ -2,7 +2,8 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_study_method = @user.post_study_methods
+    @post_study_method = PostStudyMethod.new
+    @post_study_methods = @user.post_study_methods
   end
 
   def index

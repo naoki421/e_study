@@ -63,7 +63,7 @@
         <h4 class="text-info">コメント一覧(<%= @post_study_method.comments.count %>件)</h4>
       </div>
       <div class="mt-4">
-        <% @post_study_method.comments.each do |comment| %>
+        <% @post_study_method.comments.reverse_each do |comment| %>
           <div class="border-bottom">
             <%= link_to user_path(comment.user) do %>
               <span><%= image_tag comment.user.get_profile_image(50,50) %></span>
