@@ -1,0 +1,17 @@
+<div>
+  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <% if @user == current_user %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+
+
+<% @post_study_method.each do |post_study_method| %>
+<div>
+  <p><%= post_study_method.user.name %></p>
+  <p><%= image_tag post_study_method.user.get_profile_image(100,100) %></p>
+  <p><%= post_study_method.title %></p>
+  <p><%= post_study_method.body %></p>
+</div>
+<% end %>

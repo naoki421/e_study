@@ -1,0 +1,11 @@
+<h2>プロフィール編集</h2>
+
+<%= form_with model: @user do |f| %>
+  <%= f.label :profile_image, "プロフィール画像" %>
+  <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+  <%= f.label :name, "ユーザーネーム" %>
+  <%= f.text_field :name %>
+  <%= f.label :school_year, "学年" %>
+  <%= f.select :school_year, [["中学1年",1], ["中学2年",2], ["中学3年",3], ["高校1年",4], ["高校2年",5], ["高校3年",6], ["大学生以上",7]] %>
+  <%= f.submit "変更を保存" %>
+<% end %>
