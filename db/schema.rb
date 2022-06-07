@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_064514) do
+ActiveRecord::Schema.define(version: 2022_06_07_095948) do
+
+  create_table "achieved_tasks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.float "study_hours", null: false
+    t.string "subject", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -85,7 +93,6 @@ ActiveRecord::Schema.define(version: 2022_06_07_064514) do
   create_table "tasks", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "content", null: false
-    t.boolean "is_achieved", default: false, null: false
     t.float "study_hours", null: false
     t.integer "subject_id", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -2,7 +2,6 @@
   <p class="my-3 ml-5 mr-auto">トータル勉強時間: <%= @total_study_time %>時間</p>
   <p class="my-3 mr-5">ご褒美ポイント: <%= current_user.point %>ポイント</p>
 </div>
-<p><%= @todays_total_study_time %></p>
 
 <div class="container">
   <div class="row">
@@ -24,7 +23,7 @@
             <% @tasks.each do |task| %>
               <tr>
                 <td>
-                  <%= link_to achieve_path(task), method: :patch, data: {confirm: "タスクを達成しますか？"} do %>
+                  <%= link_to task_achieved_tasks_path(task), method: :post, data: {confirm: "タスクを達成しますか？"} do %>
                     <i class="fa-regular fa-square-check"></i>
                   <% end %>
                 </td>

@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
 
   scope module: :public do
-    patch "/task/:id/achieve" => "tasks#achieve", as: "achieve"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :tasks, except: [:index, :show]
+    resources :tasks, except: [:index, :show] do
+      resources :achieved_tasks, only: [:create, :index]
+    end
     resources :subjects, except: [:index, :show]
     resources :post_study_methods do
       resource :favorites, only: [:create, :destroy]
