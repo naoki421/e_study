@@ -24,7 +24,7 @@
                 </td>
                 <td><%= task.subject.name %></td>
                 <td><%= task.content %></td>
-                <td><%= task.study_hours %>時間</td>
+                <td><%= task.study_hour %>時間</td>
                 <td>
                   <%= link_to edit_task_path(task) do %>
                     <i class="fa-solid fa-pen-to-square"></i>
@@ -58,8 +58,8 @@
               <%= f.text_field :content, placeholder: "(例)国語の教科書", autocomplete: "off" %>
             </div>
             <div>
-              <%= f.label :study_hours, "学習時間:", class: "mr-2" %>
-              <%= f.select :study_hours, *[((0.5)..(12.0)).step(0.5)] %>時間
+              <%= f.label :study_hour, "学習時間:", class: "mr-2" %>
+              <%= f.select :study_hour, *[((0.5)..(12.0)).step(0.5)] %>時間
             </div>
             <div>
               <%= f.submit "タスク追加", class: "btn btn-secondary" %>

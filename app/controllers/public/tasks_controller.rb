@@ -34,7 +34,7 @@ class Public::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:content, :study_hours, :subject_id)
+    params.require(:task).permit(:content, :study_hour, :subject_id)
   end
 
 end
