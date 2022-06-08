@@ -1,6 +1,5 @@
 class Public::PostStudyMethodsController < ApplicationController
 
-  
   def index
     @post_study_methods = PostStudyMethod.all
   end

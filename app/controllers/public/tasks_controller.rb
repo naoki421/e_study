@@ -4,7 +4,8 @@ class Public::TasksController < ApplicationController
     @task = Task.new
     @tasks = Task.where(user_id: current_user.id)
     #ユーザーの総勉強時間
-    @total_study_time = AchievedTask.where(user_id: current_user.id).sum(:study_hours)
+    @total_study_time = AchievedTask.where(user_id: current_user.id).sum(:study_hour)
+    @todays_total_study_time = AchievedTask.where(user_id: current_user.id, created_at: Time.current.all_day).sum(:study_hour)
   end
 
   def create

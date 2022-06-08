@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_095948) do
+ActiveRecord::Schema.define(version: 2022_06_08_094249) do
 
   create_table "achieved_tasks", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.float "study_hours", null: false
+    t.float "study_hour", null: false
     t.string "subject", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_095948) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "school_year", null: false
     t.string "name", null: false
-    t.float "point"
+    t.float "point", default: 0.0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

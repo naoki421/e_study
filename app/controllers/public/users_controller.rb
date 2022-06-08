@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-
+    @total_study_ranks = AchievedTask.joins(:user).group("users.name").order("sum_study_hour DESC").sum(:study_hour)
   end
 
   def edit

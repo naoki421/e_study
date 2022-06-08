@@ -1,1 +1,6 @@
 <h3>ランキングページ</h3>
+<% @total_study_ranks.each.with_index(1) do |rank, i| %>
+<%= i %>位
+<%= rank.first %>
+<%= rank.second %>時間
+<% end %>
