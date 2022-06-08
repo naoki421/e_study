@@ -9,9 +9,10 @@ class Public::UsersController < ApplicationController
   def index
     @total_study_ranks = AchievedTask.joins(:user).group("users.name").order("sum_study_hour DESC").sum(:study_hour)
     # 自分のランキングを調べる
+    @search_my_rank = AchievedTask.group(:user_id).order("sum_study_hour DESC").sum(:study_hour)
     @my_rank = 0
-    @total_study_ranks.each.with_index(1) do |rank, i|
-      if rank.first == current_user.name
+    @search_my_rank.each.with_index(1) do |rank, i|
+      if rank.first == current_user.id
         @my_rank = i
         break
       end
