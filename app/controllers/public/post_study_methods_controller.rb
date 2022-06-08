@@ -1,10 +1,6 @@
 class Public::PostStudyMethodsController < ApplicationController
 
-  def new
-    @post_study_method = PostStudyMethod.new
-    @post_study_methods = current_user.post_study_methods
-  end
-
+  
   def index
     @post_study_methods = PostStudyMethod.all
   end
@@ -28,7 +24,7 @@ class Public::PostStudyMethodsController < ApplicationController
   def update
     @post_study_method = PostStudyMethod.find(params[:id])
     @post_study_method.update(post_study_method_params)
-    redirect_to new_post_study_method_path
+    redirect_to user_path(current_user)
   end
 
   def destroy

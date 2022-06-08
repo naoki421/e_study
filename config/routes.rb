@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       resources :achieved_tasks, only: [:create, :index]
     end
     resources :subjects, except: [:index, :show]
-    resources :post_study_methods do
+    resources :post_study_methods, except: [:new] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
