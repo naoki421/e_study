@@ -1,8 +1,53 @@
-<h3>ランキングページ</h3>
-<% @total_study_ranks.each.with_index(1) do |rank, i| %>
-<%= i %>位
-<%= rank.first %>
-<%= rank.second %>時間
-<% end %>
-あなたのランキングは<%= @my_rank %>位です
+<div>
+  <h3>ランキングページ</h3>
+  <input type="radio" id="total" name="btn" onclick="buttonClick()">トータル
+  <input type="radio" id="day" name="btn" onclick="buttonClick()">今日
+  <input type="radio" id="month" name="btn" onclick="buttonClick()">今月
+</div>
+
+<div id="total_rank">
+  <% @total_study_ranks.each.with_index(1) do |rank, i| %>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= i %>位</td>
+          <td><%= rank.first %></td>
+          <td><%= rank.second %>時間</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  あなたのランキングは<%= @total_my_rank %>位です
+</div>
+
+<div id="day_rank" style="display: none">
+  <% @day_study_ranks.each.with_index(1) do |rank, i| %>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= i %>位</td>
+          <td><%= rank.first %></td>
+          <td><%= rank.second %>時間</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  あなたのランキングは<%= @day_my_rank %>位です
+</div>
+
+<div id="month_rank"  style="display: none">
+  <% @month_study_ranks.each.with_index(1) do |rank, i| %>
+    <table>
+      <tbody>
+        <tr>
+          <td><%= i %>位</td>
+          <td><%= rank.first %></td>
+          <td><%= rank.second %>時間</td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  あなたのランキングは<%= @month_my_rank %>位です
+</div>
+
 
