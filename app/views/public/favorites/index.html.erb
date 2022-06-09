@@ -1,0 +1,17 @@
+<h4>いいね一覧</h4>
+<% @favorites.each do |favorite| %>
+  <%= link_to "#{favorite.post_study_method.user.name}", post_study_method_path(favorite.post_study_method) %>
+  <%= favorite.post_study_method.title %>
+  <%= favorite.post_study_method.body %>
+  コメント数<%= favorite.post_study_method.comments.count %>
+  <% if favorite.post_study_method.favorited_by?(current_user) %>
+    <%= link_to post_study_method_favorites_path(favorite.post_study_method), method: :delete do %>
+      ❤<%= favorite.post_study_method.favorites.count %>いいね
+    <% end %>
+  <% else %>
+    <%= link_to post_study_method_favorites_path(favorite.post_study_method), method: :post do %>
+      ♡<%= favorite.post_study_method.favorites.count %>いいね
+    <% end %>
+  <% end %>
+<% end %>
+

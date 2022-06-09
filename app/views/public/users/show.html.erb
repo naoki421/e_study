@@ -41,6 +41,7 @@
     </div>
     <div class="col-7 offset-1">
       <div class="mt-5">
+        <h4 class="text-info">このユーザーの投稿</h4>
         <% @post_study_methods.reverse_each do |post_study_method| %>
           <div class="border-bottom">
             <%= link_to user_path(post_study_method.user) do %>

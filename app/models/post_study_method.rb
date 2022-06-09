@@ -11,4 +11,9 @@ class PostStudyMethod < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #投稿を検索するメソッド
+  def self.search_for(word)
+    PostStudyMethod.where("title LIKE ? or body LIKE ?", "%#{word}%", "%#{word}%")
+  end
+
 end

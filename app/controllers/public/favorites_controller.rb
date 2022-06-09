@@ -15,6 +15,10 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to request.referer
   end
+  
+  def index
+    @favorites = current_user.favorites
+  end
 
 end
 

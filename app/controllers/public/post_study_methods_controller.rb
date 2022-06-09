@@ -32,6 +32,12 @@ class Public::PostStudyMethodsController < ApplicationController
     redirect_to request.referer
   end
 
+  def search
+    @word = params[:word]
+    @post_study_methods = PostStudyMethod.search_for(@word)
+    render :index
+  end
+
   private
 
   def post_study_method_params
