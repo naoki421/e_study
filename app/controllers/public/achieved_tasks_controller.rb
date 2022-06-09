@@ -1,5 +1,9 @@
 class Public::AchievedTasksController < ApplicationController
 
+  def index
+
+  end
+
   def create
     @task = Task.find(params[:task_id])
     @achieved_task = AchievedTask.new
