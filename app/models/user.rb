@@ -14,15 +14,19 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, presence: true
-  validates :school_year, presence: true, numericality: { in: 1..7 }
+  validates :school_year, presence: true
 
+  enum school_year: {jhs_one:0, jhs_two:1, jhs_three:2, hs_one:3, hs_two:4, hs_three:5, adult:6}
+
+  #ゲストユーザーログイン
   def self.guest
-    find_or_create_by!(name: "ゲストユーザー" , email: "guest@example.com", school_year: 7) do |user|
+    find_or_create_by!(name: "ゲストユーザー" , email: "guest@example.com", school_year: 6) do |user|
       user.password = SecureRandom.urlsafe_base64
       user.email = "guest@example.com"
     end
   end
 
+  #プロフィール画像表示
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpeg')
