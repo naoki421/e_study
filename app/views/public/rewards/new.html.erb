@@ -1,0 +1,38 @@
+<h3>ポイント交換ページ</h3>
+
+<h4>ご褒美一覧</h4>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>内容</th>
+        <th>必要ポイント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rewards.each do |reward| %>
+        <tr>
+          <td><%= reward.content %></td>
+          <td><%= reward.point %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<h4>ご褒美設定</h4>
+<div>
+  <%= form_with model: @reward, url: rewards_path, method: :post do |f| %>
+    <div>
+      <%= f.label :content, "内容" %>
+      <%= f.text_field :content, placeholder: "(例)ゲームを1時間できる,1日好きなだけ漫画を読める", autocomplete: "off" %>
+    </div>
+    <div>
+      <%= f.label :point, "必要ポイント" %>
+      <%= f.select :point, *[((0.5)..(100.0)).step(0.5)] %>ポイント
+    </div>
+    <div>
+      <%= f.submit "ご褒美設定" %>
+    </div>
+  <% end %>
+</div>

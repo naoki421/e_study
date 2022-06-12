@@ -41,7 +41,13 @@
         </table>
       </div>
     </div>
-    <%= @todays_total_study_time %>
+    <div class="col-4">
+      <p class="text-center">今日は<b class="text-danger"><%= @todays_total_study_time %></b>時間勉強しました！</p>
+      <p class="text-center"><i class="fa-solid fa-arrow-down-long fa-2x"></i></p>
+      <div>
+        <%= link_to "学習の記録を見る", achieved_tasks_path, class: "btn btn-outline-info btn-block" %>
+      </div>
+    </div>
   </div>
   <div class="row mt-5">
     <div class="col-8">

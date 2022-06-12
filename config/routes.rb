@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update]
     resources :subjects, except: [:index, :show]
+    resources :rewards, except: [:index, :show]
     resources :tasks, except: [:index, :show] do
       resources :achieved_tasks, only: [:create]
     end
