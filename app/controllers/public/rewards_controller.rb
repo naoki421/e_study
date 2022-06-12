@@ -13,17 +13,21 @@ class Public::RewardsController < ApplicationController
   end
 
   def edit
-
+    @reward = Reward.find(params[:id])
   end
 
   def update
-
+    @reward = Reward.find(params[:id])
+    @reward.update(reward_params)
+    redirect_to new_reward_path
   end
 
   def destroy
-
+    reward = Reward.find(params[:id])
+    reward.destroy
+    redirect_to request.referer
   end
-
+  
   private
 
   def reward_params

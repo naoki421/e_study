@@ -1,0 +1,16 @@
+<h3>ご褒美編集</h3>
+<div>
+  <%= form_with model: @reward, url: reward_path, method: :patch do |f| %>
+    <div>
+      <%= f.label :content, "内容" %>
+      <%= f.text_field :content, placeholder: "(例)ゲームを1時間できる,1日好きなだけ漫画を読める", autocomplete: "off" %>
+    </div>
+    <div>
+      <%= f.label :point, "必要ポイント" %>
+      <%= f.select :point, *[((0.5)..(100.0)).step(0.5)] %>ポイント
+    </div>
+    <div>
+      <%= f.submit "変更を保存" %>
+    </div>
+  <% end %>
+</div>

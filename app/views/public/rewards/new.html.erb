@@ -5,15 +5,29 @@
   <table>
     <thead>
       <tr>
+        <th>交換する</th>
         <th>内容</th>
         <th>必要ポイント</th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
     </thead>
     <tbody>
       <% @rewards.each do |reward| %>
         <tr>
+          <td></td>
           <td><%= reward.content %></td>
           <td><%= reward.point %></td>
+          <td>
+            <%= link_to edit_reward_path(reward) do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to reward_path(reward), method: :delete do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :achieved_tasks, dependent: :destroy
   has_many :rewards, dependent: :destroy
+  has_many :exchanged_rewards, dependent: :destroy
 
   has_one_attached :profile_image
 
