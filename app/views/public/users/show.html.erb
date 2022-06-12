@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-4">
       <div class="card mt-5">
-        <div class="card-header text-center">
-          <h4><%= @user.name %></h4>
+        <div class="card-header">
+          <p>ユーザーネーム: <b><%= @user.name %></b></p>
+          <p>学年: <%= @user.school_year_i18n %></p>
         </div>
         <div class="card-body text-center">
           <%= image_tag @user.get_profile_image(130,130) %>

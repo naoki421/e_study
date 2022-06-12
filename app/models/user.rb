@@ -16,7 +16,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :school_year, presence: true
 
-  enum school_year: {jhs_one:0, jhs_two:1, jhs_three:2, hs_one:3, hs_two:4, hs_three:5, adult:6}
+  #jhs→中学生、hs→高校生
+  enum school_year: {jhs_1:0, jhs_2:1, jhs_3:2, hs_1:3, hs_2:4, hs_3:5, adult:6}
 
   #ゲストユーザーログイン
   def self.guest

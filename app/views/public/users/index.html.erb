@@ -51,7 +51,11 @@
           <% @total_study_ranks.each.with_index(1) do |rank, i| %>
             <tr>
               <td><%= i %>位</td>
-              <td><%= User.find(rank.first).name %></td>
+              <td>
+                <%= link_to user_path(rank.first) do %>
+                  <%= User.find(rank.first).name %>
+                <% end %>
+              </td>
               <td><%= User.find(rank.first).school_year_i18n %></td>
               <td><%= rank.second %>時間</td>
             </tr>
@@ -62,7 +66,11 @@
           <% @day_study_ranks.each.with_index(1) do |rank, i| %>
             <tr>
               <td><%= i %>位</td>
-              <td><%= User.find(rank.first).name %></td>
+              <td>
+                <%= link_to user_path(rank.first) do %>
+                  <%= User.find(rank.first).name %>
+                <% end %>
+              </td>
               <td><%= User.find(rank.first).school_year_i18n %></td>
               <td><%= rank.second %>時間</td>
             </tr>
@@ -73,7 +81,11 @@
           <% @month_study_ranks.each.with_index(1) do |rank, i| %>
             <tr>
               <td><%= i %>位</td>
-              <td><%= User.find(rank.first).name %></td>
+              <td>
+                <%= link_to user_path(rank.first) do %>
+                  <%= User.find(rank.first).name %>
+                <% end %>
+              </td>
               <td><%= User.find(rank.first).school_year_i18n %></td>
               <td><%= rank.second %>時間</td>
             </tr>
