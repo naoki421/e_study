@@ -1,5 +1,29 @@
 <h3>ポイント交換ページ</h3>
 
+<h4>交換したご褒美</h4>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>実行</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exchanged_reward.each do |exchanged_reward| %>
+        <tr>
+          <td>
+            <%= link_to reward_exchanged_reward_path(exchanged_reward.reward, exchanged_reward), method: :delete, data: {confirm: "ご褒美を実行しますか？"} do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          </td>
+          <td><%= exchanged_reward.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <h4>ご褒美一覧</h4>
 <div>
   <table>
@@ -15,7 +39,11 @@
     <tbody>
       <% @rewards.each do |reward| %>
         <tr>
-          <td></td>
+          <td>
+            <%= link_to reward_exchanged_rewards_path(reward), method: :post, data: {confirm: "ポイントと交換しますか？"} do %>
+              <i class="fa-regular fa-square-check"></i>
+            <% end %>
+          </td>
           <td><%= reward.content %></td>
           <td><%= reward.point %></td>
           <td>

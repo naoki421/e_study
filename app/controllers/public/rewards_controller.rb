@@ -3,6 +3,7 @@ class Public::RewardsController < ApplicationController
   def new
     @reward = Reward.new
     @rewards = Reward.where(user_id: current_user.id)
+    @exchanged_reward = ExchangedReward.where(user_id: current_user.id)
   end
 
   def create
@@ -27,7 +28,7 @@ class Public::RewardsController < ApplicationController
     reward.destroy
     redirect_to request.referer
   end
-  
+
   private
 
   def reward_params
