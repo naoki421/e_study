@@ -49,6 +49,17 @@ class Public::UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def quit
+
+  end
+
+  def out
+    current_user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会手続きが完了しました。またのご利用をお待ちしています。"
+    redirect_to root_path
+  end
+
   private
 
   def user_params

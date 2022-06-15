@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     get "/achieved_tasks", to: "achieved_tasks#index"
     get "/favorites", to: "favorites#index"
     get "/search", to: "post_study_methods#search"
+    get "/quit", to: "users#quit"
+    patch "/out", to: "users#out"
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
