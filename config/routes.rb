@@ -16,9 +16,13 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
-  root to: "public/homes#top"
+  namespace :admin do
+    root to: "users#index"
+    resources :users, only: [:show, :edit, :update]
+  end
 
   scope module: :public do
+    root to: "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
     resources :subjects, except: [:index, :show]
     resources :tasks, except: [:index, :show] do

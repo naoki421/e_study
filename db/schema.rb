@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_151439) do
+ActiveRecord::Schema.define(version: 2022_06_15_072258) do
 
   create_table "achieved_tasks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_151439) do
     t.integer "school_year", null: false
     t.string "name", null: false
     t.float "point", default: 0.0
+    t.boolean "is_deleted", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
