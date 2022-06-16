@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "users#index"
     resources :users, only: [:show, :edit, :update]
+    resources :post_study_methods, only: [:show,:index, :destroy] do
+      resources :comments, only: [:destroy]
+    end
+    get "/search", to: "post_study_methods#search"
   end
 
   scope module: :public do
