@@ -1,4 +1,5 @@
 class Public::TasksController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @task = Task.new
@@ -17,6 +18,9 @@ class Public::TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+    if @task.user != current_user
+      redirect_to new_task_path
+    end
   end
 
   def update

@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     post_study_method = PostStudyMethod.find(params[:post_study_method_id])

@@ -75,6 +75,13 @@
       </div>
       <p>↓<br>科目の追加は<%= link_to "こちら", new_subject_path %></p>
     </div>
+    <div class="col-4">
+      <p class="text-center">みんなのおすすめの勉強方法を見てみよう！</p>
+      <p class="text-center"><i class="fa-solid fa-arrow-down-long fa-2x"></i></p>
+      <div>
+        <%= link_to "投稿を見る", post_study_methods_path, class: "btn btn-outline-success btn-block" %>
+      </div>
+    </div>
   </div>
 </div>
 

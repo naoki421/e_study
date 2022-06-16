@@ -1,4 +1,5 @@
 class Public::SubjectsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @subject = Subject.new
@@ -14,6 +15,9 @@ class Public::SubjectsController < ApplicationController
 
   def edit
     @subject = Subject.find(params[:id])
+    if @subject.user != current_user
+      redirect_to new_subject_path
+    end
   end
 
   def update

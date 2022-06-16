@@ -1,4 +1,5 @@
 class Public::AchievedTasksController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     #トータル、今日、今月の合計勉強時間

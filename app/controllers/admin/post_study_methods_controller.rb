@@ -1,4 +1,5 @@
 class Admin::PostStudyMethodsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @post_study_methods = PostStudyMethod.all

@@ -1,4 +1,5 @@
 class Public::PostStudyMethodsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @post_study_methods = PostStudyMethod.all
@@ -18,6 +19,9 @@ class Public::PostStudyMethodsController < ApplicationController
 
   def edit
     @post_study_method = PostStudyMethod.find(params[:id])
+    if @post_study_method.user != current_user
+      redirect_to post_study_method_path(@post_study_method)
+    end
   end
 
   def update

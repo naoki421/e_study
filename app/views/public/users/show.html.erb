@@ -10,7 +10,7 @@
           <%= image_tag @user.get_profile_image(130,130) %>
         </div>
         <div class="card-footer text-center">
-          <% if @user == current_user %>
+          <% if @user == current_user && @user.email != "guest@example.com" %>
             <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
           <% end %>
         </div>

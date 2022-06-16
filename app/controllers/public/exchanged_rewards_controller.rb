@@ -1,4 +1,5 @@
 class Public::ExchangedRewardsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @reward = Reward.find(params[:reward_id])

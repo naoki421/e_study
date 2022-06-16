@@ -1,4 +1,5 @@
 class Public::RewardsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @reward = Reward.new
@@ -15,6 +16,9 @@ class Public::RewardsController < ApplicationController
 
   def edit
     @reward = Reward.find(params[:id])
+    if @reward.user != current_user
+      redirect_to new_reward_path
+    end
   end
 
   def update
