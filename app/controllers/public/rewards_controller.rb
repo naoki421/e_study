@@ -10,8 +10,13 @@ class Public::RewardsController < ApplicationController
   def create
     @reward = Reward.new(reward_params)
     @reward.user_id = current_user.id
-    @reward.save
-    redirect_to request.referer
+    if @reward.save
+      flash[:notice] = "ご褒美を設定しました。"
+      redirect_to new_reward_path
+    else
+      flash[:alert] = "ご褒美の内容を入力してください。"
+      redirect_to new_reward_path
+    end
   end
 
   def edit
@@ -23,14 +28,20 @@ class Public::RewardsController < ApplicationController
 
   def update
     @reward = Reward.find(params[:id])
-    @reward.update(reward_params)
-    redirect_to new_reward_path
+    if @reward.update(reward_params)
+      flash[:notice] = "ご褒美を編集しました。"
+      redirect_to new_reward_path
+    else
+      flash[:alert] = "ご褒美の内容を入力してください。"
+      redirect_to request.referer
+    end
   end
 
   def destroy
     reward = Reward.find(params[:id])
     reward.destroy
-    redirect_to request.referer
+    flash[:notice] = "ご褒美を削除しました。"
+    redirect_to new_reward_path
   end
 
   private

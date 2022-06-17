@@ -24,7 +24,8 @@ class Public::AchievedTasksController < ApplicationController
     @user.point += @task.study_hour
     @user.save
     @task.destroy
-    redirect_to request.referer
+    flash[:notice] = "タスクを達成しました！"
+    redirect_to new_task_path
   end
 
 end

@@ -12,8 +12,13 @@ class Public::TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
-    @task.save
-    redirect_to request.referer
+    if @task.save
+      flash[:notice] = "タスクを追加しました。"
+      redirect_to new_task_path
+    else
+      flash[:alert] = "科目もしくはタスクを設定してください。"
+      redirect_to new_task_path
+    end
   end
 
   def edit
@@ -25,14 +30,20 @@ class Public::TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
-    redirect_to new_task_path
+    if @task.update(task_params)
+      flash[:notice] = "タスクを編集しました。"
+      redirect_to new_task_path
+    else
+      flash[:alert] = "タスクもしくは科目を設定してください。"
+      redirect_to request.referer
+    end
   end
 
   def destroy
     task = Task.find(params[:id])
     task.destroy
-    redirect_to request.referer
+    flash[:notice] = "タスクを削除しました。"
+    redirect_to new_task_path
   end
 
   private

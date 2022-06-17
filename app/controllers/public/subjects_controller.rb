@@ -9,8 +9,14 @@ class Public::SubjectsController < ApplicationController
   def create
     @subject = Subject.new(subject_params)
     @subject.user_id = current_user.id
-    @subject.save
-    redirect_to request.referer
+    if @subject.save
+      flash[:notice] = "科目を追加しました。"
+      redirect_to new_subject_path
+    else
+      flash[:alert] = "科目名を設定してください。"
+      @subjects = current_user.subjects
+      redirect_to new_subject_path
+    end
   end
 
   def edit
@@ -22,14 +28,20 @@ class Public::SubjectsController < ApplicationController
 
   def update
     @subject = Subject.find(params[:id])
-    @subject.update(subject_params)
-    redirect_to new_subject_path
+    if @subject.update(subject_params)
+      flash[:notice] = "科目を編集しました。"
+      redirect_to new_subject_path
+    else
+      flash[:alert] = "科目名を設定してください。"
+      redirect_to request.referer
+    end
   end
 
   def destroy
     subject = Subject.find(params[:id])
     subject.destroy
-    redirect_to request.referer
+    flash[:notice] = "科目を削除しました。"
+    redirect_to new_subject_path
   end
 
   private

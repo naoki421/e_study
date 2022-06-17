@@ -13,16 +13,19 @@ class Public::ExchangedRewardsController < ApplicationController
       #ご褒美とポイントを交換する処理
       @user.point -= @reward.point
       @user.save
-      redirect_to request.referer
+      flash[:notice] = "ポイントとご褒美を交換しました。"
+      redirect_to new_reward_path
     else
-      redirect_to request.referer
+      flash[:alert] = "ポイントが足りません。"
+      redirect_to new_reward_path
     end
   end
 
   def destroy
     exchanged_reward = ExchangedReward.find(params[:id])
     exchanged_reward.destroy
-    redirect_to request.referer
+    flash[:notice] = "ご褒美を実行しました。"
+    redirect_to new_reward_path
   end
 
 end

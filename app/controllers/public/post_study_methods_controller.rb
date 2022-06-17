@@ -13,8 +13,13 @@ class Public::PostStudyMethodsController < ApplicationController
   def create
     @post_study_method = PostStudyMethod.new(post_study_method_params)
     @post_study_method.user_id = current_user.id
-    @post_study_method.save
-    redirect_to request.referer
+    if @post_study_method.save
+      flash[:notice] = "投稿しました。"
+      redirect_to user_path(current_user)
+    else
+      flash[:alert] = "タイトルと本文を入力してください。"
+      redirect_to user_path(current_user)
+    end
   end
 
   def edit
@@ -26,14 +31,20 @@ class Public::PostStudyMethodsController < ApplicationController
 
   def update
     @post_study_method = PostStudyMethod.find(params[:id])
-    @post_study_method.update(post_study_method_params)
-    redirect_to user_path(current_user)
+    if @post_study_method.update(post_study_method_params)
+      flash[:notice] = "投稿を編集しました。"
+      redirect_to user_path(current_user)
+    else
+      flash[:alert] = "タイトルと本文を入力してください"
+      redirect_to request.referer
+    end
   end
 
   def destroy
     post_study_method = PostStudyMethod.find(params[:id])
     post_study_method.destroy
-    redirect_to request.referer
+    flash[:notice] = "投稿を削除しました。"
+    redirect_to user_path(current_user)
   end
 
   def search

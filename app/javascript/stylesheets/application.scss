@@ -1,2 +1,18 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.notice {
+  background-color: green;
+  color: #white;
+  text-align: center;
+}
+
+.alert {
+  background-color: red;
+  color: #white;
+  text-align: center;
+}
+
+.field_with_errors {
+  display: contents;
+}
