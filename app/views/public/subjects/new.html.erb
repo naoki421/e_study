@@ -35,12 +35,12 @@
                 <td><%= subject.name %></td>
                 <td>
                   <%= link_to edit_subject_path(subject) do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
+                    <p>編集</p>
                   <% end %>
                 </td>
                 <td>
                   <%= link_to subject_path(subject), method: :delete do %>
-                    <i class="fa-regular fa-trash-can"></i>
+                    <p>削除</p>
                   <% end %>
                 </td>
               </tr>

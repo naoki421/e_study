@@ -73,14 +73,10 @@
             <span class="ml-3">コメント数: <%= link_to "#{post_study_method.comments.count}", post_study_method_path(post_study_method) %></span>
             <% if post_study_method.user == current_user %>
               <span class="ml-3">
-                <%= link_to post_study_method_path(post_study_method), method: :delete do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>
+                <%= link_to "削除", post_study_method_path(post_study_method), method: :delete %>
               </span>
               <span class="ml-3">
-                <%= link_to edit_post_study_method_path(post_study_method) do %>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                <% end %>
+                <%= link_to "編集", edit_post_study_method_path(post_study_method) %>
               </span>
             <% end %>
           </div>
@@ -89,5 +85,3 @@
     </div>
   </div>
 </div>
-
-
